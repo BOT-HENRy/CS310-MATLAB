@@ -1,1 +1,3 @@
-//
+seems finished
+
+but in Problem 4.b, when trying to add title and xylabel, the other plot(previous one) shows up on the same plot? 
