@@ -1,0 +1,312 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>CS310 Fall 2015 Homework Assignment 2</title><meta name="generator" content="MATLAB 8.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2015-10-14"><meta name="DC.source" content="homework2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>CS310 Fall 2015 Homework Assignment 2</h1><!--introduction--><div><ul><li>Name: Yizhe Qu</li><li>Team Lab: 304</li><li>Due Date: Thursday, October 15 by 4 pm</li></ul></div><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Problem 1: Component Analysis</a></li><li><a href="#2">Problem 1.a: Equations for the linear system</a></li><li><a href="#3">Problem 1.b: Solve the linear system</a></li><li><a href="#4">Problem 2: Heat Plate Linear System</a></li><li><a href="#5">Problem 2.a: Define the heatPlate function</a></li><li><a href="#6">Problem 2.b: Call the heatPlate function under various conditions</a></li><li><a href="#7">Problem 3: Interpolation</a></li><li><a href="#8">Problem 3.a Interpolate the data</a></li><li><a href="#9">Problem 3.b Plot the data points and the interpolating polynomials on a single figure.</a></li><li><a href="#10">Problem 3.c Estimate the dissolved oxygen concentration at a temperature of 2.5 C in three ways:</a></li><li><a href="#11">Problem 3.d Which of your estimates from part c is the best? Which is the worst?</a></li><li><a href="#12">Problem 4: Approximation</a></li><li><a href="#13">Problem 4.a Fit this data to a curve of the form:</a></li><li><a href="#14">Problem 4.b Plot the data points and the approximating function</a></li><li><a href="#15">Problem 4.c Estimate the value of y at x = 8</a></li><li><a href="#16">Problem 5: Volume of Revolution</a></li><li><a href="#17">Problem 5.a Determine the x- and y-coordinates of the point where the two curves intersect</a></li><li><a href="#18">Problem 5.b Determine where the second curve intersects the x-axis</a></li><li><a href="#19">Problem 5.c Determine the volume of the solid formed from rotating around the x-axis the region between the two curves</a></li></ul></div><h2>Problem 1: Component Analysis<a name="1"></a></h2><h2>Problem 1.a: Equations for the linear system<a name="2"></a></h2><p>assume 'x' Component1, 'y' Component2 and 'z' Component3 were produced everyday. Therefore, the equations are:</p><pre>15x + 17y + 19z = 3890,
+0.3x + 0.4y + 0.55z = 95,
+1.0x + 1.2y + 1.5z = 282,</pre><h2>Problem 1.b: Solve the linear system<a name="3"></a></h2><pre class="codeinput">AforP1 = [15 17 19; 0.3 0.40 0.55; 1.0 1.2 1.5];
+bForP1 = [3890; 95; 282];
+xForP1 = AforP1 \ bForP1;
+disp( [ <span class="string">'The number of Component 1 produced per day is: '</span> , num2str(xForP1(1)) ] );
+disp( [ <span class="string">'The number of Component 2 produced per day is: '</span> , num2str(xForP1(2)) ] );
+disp( [ <span class="string">'The number of Component 3 produced per day is: '</span> , num2str(xForP1(3)) ] );
+</pre><pre class="codeoutput">The number of Component 1 produced per day is: 90
+The number of Component 2 produced per day is: 60
+The number of Component 3 produced per day is: 80
+</pre><h2>Problem 2: Heat Plate Linear System<a name="4"></a></h2><h2>Problem 2.a: Define the heatPlate function<a name="5"></a></h2><p>Attach a print-out of your heatPlate function to your work</p><h2>Problem 2.b: Call the heatPlate function under various conditions<a name="6"></a></h2><pre class="codeinput">disp( [ <span class="string">'The matrix of the Heat Plate when TA = 50, TB = 50, and TC = 50 is: '</span>] );
+heatPlate1 = heatPlate( 50, 50, 50 )
+disp( [ <span class="string">'The matrix of the Heat Plate when TA = 20, TB = 20, and TC = 80 is: '</span>] );
+heatPlate2 = heatPlate( 20, 20, 80 )
+disp( [ <span class="string">'The matrix of the Heat Plate when TA = 15, TB = 95, and TC = 40 is: '</span>] );
+heatPlate3 = heatPlate( 15, 95, 40 )
+</pre><pre class="codeoutput">The matrix of the Heat Plate when TA = 50, TB = 50, and TC = 50 is: 
+
+heatPlate1 =
+
+   50.0000   50.0000   50.0000   50.0000   50.0000
+   50.0000   50.0000   50.0000   50.0000   50.0000
+   50.0000   50.0000   50.0000   50.0000   50.0000
+
+The matrix of the Heat Plate when TA = 20, TB = 20, and TC = 80 is: 
+
+heatPlate2 =
+
+   32.6839   38.6481   40.7952   38.6481   32.6839
+   39.4036   42.4652   45.0895   42.4652   39.4036
+   43.0616   46.7197   54.6322   46.7197   43.0616
+
+The matrix of the Heat Plate when TA = 15, TB = 95, and TC = 40 is: 
+
+heatPlate3 =
+
+   31.7243   41.5422   49.8012   59.1338   71.9337
+   38.6308   43.1010   48.7276   55.6664   61.6674
+   41.0671   43.5033   46.3419   53.1368   57.4021
+
+</pre><h2>Problem 3: Interpolation<a name="7"></a></h2><h2>Problem 3.a Interpolate the data<a name="8"></a></h2><pre class="codeinput">Temp = [0:5:30];
+OxygenDis = [11.4 10.3 8.96 8.08 7.35 6.73 6.20];
+coefAll = polyfit(Temp,OxygenDis,6);
+disp( [ <span class="string">'Coefficients of interpolating polynomial goes through all the data points is: '</span> ] );
+disp( num2str(coefAll));
+coefThree = polyfit(Temp(1:3),OxygenDis(1:3),2);
+disp( [ <span class="string">'Coefficients of interpolating polynomial goes through first 3 data points is: '</span> ] );
+disp( num2str(coefThree));
+</pre><pre class="codeoutput">Coefficients of interpolating polynomial goes through all the data points is: 
+-1.36e-07  1.36133e-05    -0.000527     0.009765     -0.08194   0.00336667         11.4
+Coefficients of interpolating polynomial goes through first 3 data points is: 
+-0.0048       -0.196         11.4
+</pre><h2>Problem 3.b Plot the data points and the interpolating polynomials on a single figure.<a name="9"></a></h2><pre class="codeinput">xAll = 0:0.1:30;
+xThree = [0:0.1:10];
+yAll = polyval(coefAll, xAll);
+yThree = polyval(coefThree, xThree);
+hold <span class="string">on</span>
+plot(Temp, OxygenDis, <span class="string">'ko'</span>);   <span class="comment">% Use black circles to represent the data points</span>
+plot(xAll, yAll, <span class="string">'m--'</span>);       <span class="comment">% Plot the polynomial through all the data points as a magenta dashed line</span>
+plot(xThree, yThree, <span class="string">'c-'</span>);    <span class="comment">% Plot the polynomial through just the first 3 data as a solid cyan line</span>
+title(<span class="string">'Dissolved oxygen concentration in water'</span>)
+xlabel(<span class="string">'Temperature (C)'</span>)
+ylabel(<span class="string">'Dissolved oxygen (mg/L)'</span>)
+hold <span class="string">off</span>
+</pre><img vspace="5" hspace="5" src="homework2_01.png" alt=""> <h2>Problem 3.c Estimate the dissolved oxygen concentration at a temperature of 2.5 C in three ways:<a name="10"></a></h2><pre class="codeinput"><span class="comment">%i.using your polynomial interpolation through all the data points</span>
+estimate1 = polyval(coefAll, 2.5)
+<span class="comment">%ii.using your polynomial interpolation through the first 3 data points</span>
+estimate2 = polyval(coefThree, 2.5)
+<span class="comment">%iii.using a spline interpolation</span>
+estimate3 = spline(Temp, OxygenDis, 2.5)
+</pre><pre class="codeoutput">
+estimate1 =
+
+   11.0296
+
+
+estimate2 =
+
+   10.8800
+
+
+estimate3 =
+
+   10.9418
+
+</pre><h2>Problem 3.d Which of your estimates from part c is the best? Which is the worst?<a name="11"></a></h2><pre class="codeinput">disp([<span class="string">'I think "estimate3" which uses a spline interpolation is the best,'</span>]);
+disp([<span class="string">'because the cubic spline function can give us a very smooth curve that'</span>]);
+disp([<span class="string">'interpolates data points and does not wildly oscillate between data points,'</span>]);
+disp([<span class="string">'and "estimate2" which uses only 3 data points is the worst, because the'</span>]);
+disp([<span class="string">'function will not be very accurate since it only uses 3 data points to estimate.'</span>]);
+</pre><pre class="codeoutput">I think "estimate3" which uses a spline interpolation is the best,
+because the cubic spline function can give us a very smooth curve that
+interpolates data points and does not wildly oscillate between data points,
+and "estimate2" which uses only 3 data points is the worst, because the
+function will not be very accurate since it only uses 3 data points to estimate.
+</pre><h2>Problem 4: Approximation<a name="12"></a></h2><h2>Problem 4.a Fit this data to a curve of the form:<a name="13"></a></h2><p>we can transform the equation to e^(1/y) = a*x^2 + b*x + c</p><pre class="codeinput">xdata = [1.00,2.12,3.09,5.23,7.64,9.14,11.2,14.3,16.1,19.3,22.7,25.0];
+ydata = [50.6,44.1,40.3,31.2,28.7,24.8,23.2,18.3,16.2,14.8,12.9,12.6];
+zdata = exp(1./ydata);
+coefs = polyfit(xdata, zdata, 2);
+a = coefs(1);
+b = coefs(2);
+c = coefs(3);
+disp([<span class="string">'a = '</span>, num2str(a), <span class="string">'  b = '</span>, num2str(b), <span class="string">'  c = '</span>, num2str(c)]);
+</pre><pre class="codeoutput">a = 6.9558e-07  b = 0.002712  c = 1.0168
+</pre><h2>Problem 4.b Plot the data points and the approximating function<a name="14"></a></h2><pre class="codeinput">xx = [0:0.1:25];
+yy = 1./(log(a.*xx.^2 + b.*xx + c));
+<span class="comment">%Use blue pentagrams to represent the data points</span>
+<span class="comment">%and a red dash-dot line for the approximating curve.</span>
+plot(xdata, ydata, <span class="string">'bp'</span>, xx, yy, <span class="string">'r-.'</span>);
+title(<span class="string">'x data VS y data'</span>)
+xlabel(<span class="string">'x data'</span>)
+ylabel(<span class="string">'y data'</span>)
+</pre><img vspace="5" hspace="5" src="homework2_02.png" alt=""> <h2>Problem 4.c Estimate the value of y at x = 8<a name="15"></a></h2><pre class="codeinput">yapprox = 1./(log(a.*8.^2 + b.*8 + c));
+disp([<span class="string">'The approximate value of y at x = 8 is : y = '</span>, num2str(yapprox)]);
+</pre><pre class="codeoutput">The approximate value of y at x = 8 is : y = 26.447
+</pre><h2>Problem 5: Volume of Revolution<a name="16"></a></h2><h2>Problem 5.a Determine the x- and y-coordinates of the point where the two curves intersect<a name="17"></a></h2><pre class="codeinput">xzero = fzero( <span class="string">'5.*x + cos(3.*x) + 1 - (10 - 2.*x + log(x.^2))'</span>, 1 );
+yzero = 5.*xzero + cos(3.*xzero) + 1;
+disp([<span class="string">'For the point where the two curves intersect, the coordinates are x = '</span>,<span class="keyword">...</span>
+    num2str(xzero), <span class="string">'  y = '</span>, num2str(yzero)]);
+</pre><pre class="codeoutput">For the point where the two curves intersect, the coordinates are x = 1.4438  y = 7.847
+</pre><h2>Problem 5.b Determine where the second curve intersects the x-axis<a name="18"></a></h2><pre class="codeinput">xintersect = fzero(<span class="string">'10 - 2.*x + log(x.^2)'</span>, 6.5);
+disp([<span class="string">'For the point where the second curve intersects the x-axis, the coordinates are x = '</span>,<span class="keyword">...</span>
+    num2str(xintersect), <span class="string">'  y = '</span>, num2str(0)]);
+</pre><pre class="codeoutput">For the point where the second curve intersects the x-axis, the coordinates are x = 6.9368  y = 0
+</pre><h2>Problem 5.c Determine the volume of the solid formed from rotating around the x-axis the region between the two curves<a name="19"></a></h2><pre class="codeinput">funcForArea = @(x)pi.*(5.*x + cos(3.*x) + 1).^2 - pi.*(10 - 2.*x + log(x.^2)).^2;
+volumeofrotate = integral(funcForArea, xzero, xintersect);
+disp([<span class="string">'The volume of the solid formed from rotating is : volume = '</span>,num2str(volumeofrotate)]);
+</pre><pre class="codeoutput">The volume of the solid formed from rotating is : volume = 9077.5599
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2014a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% CS310 Fall 2015 Homework Assignment 2 
+% * Name: Yizhe Qu
+% * Team Lab: 304
+% * Due Date: Thursday, October 15 by 4 pm
+
+%% Problem 1: Component Analysis
+%% Problem 1.a: Equations for the linear system
+% assume 'x' Component1, 'y' Component2 and 'z' Component3 were produced everyday.
+% Therefore, the equations are: 
+%
+%  15x + 17y + 19z = 3890,  
+%  0.3x + 0.4y + 0.55z = 95, 
+%  1.0x + 1.2y + 1.5z = 282,
+
+%% Problem 1.b: Solve the linear system
+AforP1 = [15 17 19; 0.3 0.40 0.55; 1.0 1.2 1.5];
+bForP1 = [3890; 95; 282];
+xForP1 = AforP1 \ bForP1;
+disp( [ 'The number of Component 1 produced per day is: ' , num2str(xForP1(1)) ] );
+disp( [ 'The number of Component 2 produced per day is: ' , num2str(xForP1(2)) ] );
+disp( [ 'The number of Component 3 produced per day is: ' , num2str(xForP1(3)) ] );
+
+%% Problem 2: Heat Plate Linear System
+%% Problem 2.a: Define the heatPlate function
+% Attach a print-out of your heatPlate function to your work
+
+
+%% Problem 2.b: Call the heatPlate function under various conditions
+disp( [ 'The matrix of the Heat Plate when TA = 50, TB = 50, and TC = 50 is: '] );
+heatPlate1 = heatPlate( 50, 50, 50 ) 
+disp( [ 'The matrix of the Heat Plate when TA = 20, TB = 20, and TC = 80 is: '] );
+heatPlate2 = heatPlate( 20, 20, 80 )
+disp( [ 'The matrix of the Heat Plate when TA = 15, TB = 95, and TC = 40 is: '] );
+heatPlate3 = heatPlate( 15, 95, 40 )
+
+%% Problem 3: Interpolation
+%% Problem 3.a Interpolate the data
+Temp = [0:5:30];
+OxygenDis = [11.4 10.3 8.96 8.08 7.35 6.73 6.20];
+coefAll = polyfit(Temp,OxygenDis,6);
+disp( [ 'Coefficients of interpolating polynomial goes through all the data points is: ' ] );
+disp( num2str(coefAll));
+coefThree = polyfit(Temp(1:3),OxygenDis(1:3),2);
+disp( [ 'Coefficients of interpolating polynomial goes through first 3 data points is: ' ] );
+disp( num2str(coefThree));
+%% Problem 3.b Plot the data points and the interpolating polynomials on a single figure.
+xAll = 0:0.1:30;
+xThree = [0:0.1:10];
+yAll = polyval(coefAll, xAll);
+yThree = polyval(coefThree, xThree);
+hold on
+plot(Temp, OxygenDis, 'ko');   % Use black circles to represent the data points
+plot(xAll, yAll, 'mREPLACE_WITH_DASH_DASH');       % Plot the polynomial through all the data points as a magenta dashed line
+plot(xThree, yThree, 'c-');    % Plot the polynomial through just the first 3 data as a solid cyan line
+title('Dissolved oxygen concentration in water')
+xlabel('Temperature (C)')
+ylabel('Dissolved oxygen (mg/L)')
+hold off
+%% Problem 3.c Estimate the dissolved oxygen concentration at a temperature of 2.5 C in three ways:
+%i.using your polynomial interpolation through all the data points
+estimate1 = polyval(coefAll, 2.5)
+%ii.using your polynomial interpolation through the first 3 data points
+estimate2 = polyval(coefThree, 2.5)
+%iii.using a spline interpolation
+estimate3 = spline(Temp, OxygenDis, 2.5)
+%% Problem 3.d Which of your estimates from part c is the best? Which is the worst? 
+disp(['I think "estimate3" which uses a spline interpolation is the best,']);
+disp(['because the cubic spline function can give us a very smooth curve that']);
+disp(['interpolates data points and does not wildly oscillate between data points,']);
+disp(['and "estimate2" which uses only 3 data points is the worst, because the']);
+disp(['function will not be very accurate since it only uses 3 data points to estimate.']);
+%% Problem 4: Approximation
+%% Problem 4.a Fit this data to a curve of the form:
+% we can transform the equation to e^(1/y) = a*x^2 + b*x + c
+xdata = [1.00,2.12,3.09,5.23,7.64,9.14,11.2,14.3,16.1,19.3,22.7,25.0];
+ydata = [50.6,44.1,40.3,31.2,28.7,24.8,23.2,18.3,16.2,14.8,12.9,12.6];
+zdata = exp(1./ydata);
+coefs = polyfit(xdata, zdata, 2);
+a = coefs(1);
+b = coefs(2);
+c = coefs(3);
+disp(['a = ', num2str(a), '  b = ', num2str(b), '  c = ', num2str(c)]);
+%% Problem 4.b Plot the data points and the approximating function
+xx = [0:0.1:25];
+yy = 1./(log(a.*xx.^2 + b.*xx + c));
+%Use blue pentagrams to represent the data points 
+%and a red dash-dot line for the approximating curve.
+plot(xdata, ydata, 'bp', xx, yy, 'r-.'); 
+title('x data VS y data')
+xlabel('x data')
+ylabel('y data')
+
+
+%% Problem 4.c Estimate the value of y at x = 8
+yapprox = 1./(log(a.*8.^2 + b.*8 + c));
+disp(['The approximate value of y at x = 8 is : y = ', num2str(yapprox)]);
+%% Problem 5: Volume of Revolution
+%% Problem 5.a Determine the x- and y-coordinates of the point where the two curves intersect
+xzero = fzero( '5.*x + cos(3.*x) + 1 - (10 - 2.*x + log(x.^2))', 1 );
+yzero = 5.*xzero + cos(3.*xzero) + 1;
+disp(['For the point where the two curves intersect, the coordinates are x = ',...
+    num2str(xzero), '  y = ', num2str(yzero)]);
+%% Problem 5.b Determine where the second curve intersects the x-axis 
+xintersect = fzero('10 - 2.*x + log(x.^2)', 6.5);
+disp(['For the point where the second curve intersects the x-axis, the coordinates are x = ',...
+    num2str(xintersect), '  y = ', num2str(0)]);
+%% Problem 5.c Determine the volume of the solid formed from rotating around the x-axis the region between the two curves
+funcForArea = @(x)pi.*(5.*x + cos(3.*x) + 1).^2 - pi.*(10 - 2.*x + log(x.^2)).^2;
+volumeofrotate = integral(funcForArea, xzero, xintersect);
+disp(['The volume of the solid formed from rotating is : volume = ',num2str(volumeofrotate)]);
+
+##### SOURCE END #####
+--></body></html>
