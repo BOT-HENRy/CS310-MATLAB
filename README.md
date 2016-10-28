@@ -2,6 +2,3 @@
 //for CS310 MATLAB
 
 //includes homeworks and other scripts
-
-TODO!!!
-midterm!
